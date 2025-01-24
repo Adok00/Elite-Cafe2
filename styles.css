@@ -1,0 +1,251 @@
+/* Основные стили */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Шапка */
+.header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.header__title {
+    font-size: 3rem;
+    margin: 0;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.header__subtitle {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+.header__button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff6f61;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    animation: fadeIn 3s ease-in-out;
+}
+
+/* Преимущества */
+.advantages {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    animation: slideIn 1s ease-in-out;
+}
+
+.advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.advantage {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.advantage:hover {
+    transform: translateY(-10px);
+}
+
+.advantage__icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.advantage__title {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.advantage__text {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Каталог */
+.catalog {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.catalog-item {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.catalog-item:hover {
+    transform: translateY(-10px);
+}
+
+.catalog-item__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.catalog-item__title {
+    font-size: 1.5rem;
+    margin: 20px;
+}
+
+.catalog-item__price {
+    font-size: 1.2rem;
+    margin: 0 20px 20px;
+    color: #ff6f61;
+}
+
+.catalog-item__button {
+    display: block;
+    padding: 10px 20px;
+    background-color: #2575fc;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+/* Отзывы */
+.reviews {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.reviews__slider {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.review {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    transition: transform 0.3s ease;
+}
+
+.review:hover {
+    transform: translateY(-10px);
+}
+
+.review__text {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.review__author {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* Форма обратной связи */
+.contact {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    text-align: center;
+}
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact__form input {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact__form button {
+    padding: 15px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Футер */
+.footer {
+    padding: 40px 0;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.footer__social {
+    margin-top: 20px;
+}
+
+.footer__social a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
