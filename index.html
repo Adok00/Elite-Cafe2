@@ -3,112 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Продажа сайтов под ключ</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Elite Café</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+        }
+
+         .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            background: linear-gradient(135deg, #b8860b, #ffd700, #daa520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+          .hero h1 {
+            font-size: 7em; /* Увеличено с 4em */
+            margin-bottom: 40px; /* Увеличен отступ */
+            opacity: 0;
+            transform: translateY(50px);
+            background: linear-gradient(135deg, #ffd700, #daa520);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(218, 165, 32, 0.3);
+            font-weight: bold;
+        }
+
+
+         .hero p {
+            font-size: 2.5em; /* Увеличено с 1.5em */
+            margin-bottom: 50px; /* Увеличен отступ */
+            opacity: 0;
+            transform: translateY(50px);
+            color: #ffffff;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(50px);
+            color: #ffffff;
+        }
+
+         .book-btn {
+            background: transparent;
+            border: 3px solid #daa520; /* Увеличена толщина границы */
+            color: #daa520;
+            padding: 25px 60px; /* Увеличены отступы */
+            font-size: 2em; /* Увеличено с 1.2em */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            text-transform: uppercase;
+        }
+
+        .book-btn:hover {
+            background: #daa520;
+            color: #0a0a0a;
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+        }
+
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+            opacity: 0;
+        }
+
+         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+
+        .menu {
+            background: #0a0a0a;
+            padding: 100px 20px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .menu-item {
+            background: rgba(18, 18, 18, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 450px;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.2);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-content {
+            padding: 25px;
+        }
+
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .menu-item p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            color: #ffffff;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #daa520);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover::after {
+            transform: scaleX(1);
+        }
+
+
+        .gallery {
+            background: #0a0a0a;
+            padding: 100px 20px;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%);
+            pointer-events: none;
+        }
+
+        .gallery-item-title {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: #fff;
+            font-size: 1.8em;
+            font-family: 'Playfair Display', serif;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+        }
+
+        .contact-content {
+            text-align: center;
+            opacity: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* 3D Scene Container */
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
-    <!-- Шапка -->
-    <header class="header">
-        <div class="container">
-            <h1 class="header__title">Создаем прибыльные сайты под ключ</h1>
-            <p class="header__subtitle">Ваш бизнес в цифровом мире</p>
-            <a href="#catalog" class="header__button">Выбрать сайт</a>
+   <!-- Hero Section -->
+    <section class="section hero">
+        <div id="threejs-container"></div>
+        <div class="hero-content">
+            <h1>Elite Café</h1>
+            <p>Изысканная кухня в атмосфере роскоши</p>
+            <button class="book-btn">Забронировать столик</button>
         </div>
-    </header>
+    </section>
 
-    <!-- Преимущества -->
-    <section class="advantages">
-        <div class="container">
-            <h2 class="section-title">Почему выбирают нас?</h2>
-            <div class="advantages__grid">
-                <div class="advantage">
-                    <img src="https://creative.bz/marketplace/hotel2/block_05.png" alt="Готовые решения" class="advantage__icon">
-                    <h3 class="advantage__title">Готовые решения</h3>
-                    <p class="advantage__text">Сайты уже настроены и готовы к использованию.</p>
+    <!-- About Section -->
+  <section style="padding: 80px 20px; background-color: #0a0a0a; color: #ffffff; position: relative; overflow: hidden; font-family: 'Arial', sans-serif;">
+    <!-- Background pattern -->
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 100%); z-index: 1;"></div>
+
+    <!-- Content container -->
+    <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: center; justify-content: center;">
+
+        <!-- Left side (text content) -->
+        <div style="flex: 1; min-width: 300px; padding: 30px;">
+            <h2 style="font-size: 38px; margin-bottom: 30px; color: #FFD700; position: relative; display: inline-block;">
+                О нас
+                <span style="position: absolute; bottom: -10px; left: 0; width: 60px; height: 3px; background-color: #FFD700;"></span>
+            </h2>
+
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 25px; color: #e0e0e0;">
+                Мы создаем неповторимые кулинарные впечатления, сочетая традиции и инновации в каждом блюде. Наша команда профессионалов готова превратить ваш визит в незабываемое гастрономическое путешествие.
+            </p>
+
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 25px; color: #e0e0e0;">
+                Расположенный в самом сердце города, Elite Café предлагает изысканную атмосферу, где каждая деталь продумана до мелочей. Наше меню, разработанное шеф-поваром с мировым именем, сочетает в себе лучшие кулинарные традиции разных стран.
+            </p>
+
+            <!-- Features list -->
+            <div style="display: flex; flex-wrap: wrap; margin-top: 30px;">
+                <div style="flex: 1; min-width: 150px; margin: 10px; padding: 15px; text-align: center; background-color: rgba(255, 215, 0, 0.1); border-left: 2px solid #FFD700;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 10px;">
+                        <path d="M12 4.5a2.5 2.5 0 0 0-4.96-.46 2.5 2.5 0 0 0-1.98 3 2.5 2.5 0 0 0 3.32 3.32 2.5 2.5 0 0 0 3.62-2.38V8"></path>
+                        <path d="M20 9h-5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h5a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2Z"></path>
+                        <path d="M15.5 13.5V17a2.5 2.5 0 0 0 2.5 2.5h0a2.5 2.5 0 0 0 2.5-2.5v-7"></path>
+                        <line x1="15.5" y1="8" x2="15.5" y2="10"></line>
+                    </svg>
+                    <h3 style="font-size: 18px; margin-bottom: 10px; color: #FFD700;">Авторская кухня</h3>
                 </div>
-                <div class="advantage">
-                    <img src="icon2.png" alt="Высокая конверсия" class="advantage__icon">
-                    <h3 class="advantage__title">Высокая конверсия</h3>
-                    <p class="advantage__text">Проверенные стратегии для привлечения клиентов.</p>
+
+                <div style="flex: 1; min-width: 150px; margin: 10px; padding: 15px; text-align: center; background-color: rgba(255, 215, 0, 0.1); border-left: 2px solid #FFD700;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 10px;">
+                        <path d="M18 8h1a4 4 0 1 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                    <h3 style="font-size: 18px; margin-bottom: 10px; color: #FFD700;">Премиум напитки</h3>
                 </div>
-                <div class="advantage">
-                    <img src="icon3.png" alt="Поддержка 24/7" class="advantage__icon">
-                    <h3 class="advantage__title">Поддержка 24/7</h3>
-                    <p class="advantage__text">Мы всегда на связи, чтобы помочь вам.</p>
+
+                <div style="flex: 1; min-width: 150px; margin: 10px; padding: 15px; text-align: center; background-color: rgba(255, 215, 0, 0.1); border-left: 2px solid #FFD700;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 10px;">
+                        <path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path>
+                        <path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H7v-2a2 2 0 0 0-4 0v5Z"></path>
+                        <path d="M5 14h14"></path>
+                        <path d="M9 14v1"></path>
+                        <path d="M15 14v1"></path>
+                    </svg>
+                    <h3 style="font-size: 18px; margin-bottom: 10px; color: #FFD700;">VIP обслуживание</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side (images) -->
+        <div style="flex: 1; min-width: 300px; padding: 30px;">
+            <div style="position: relative; height: 450px;">
+                <!-- Main image -->
+                <div style="position: absolute; top: 0; right: 0; width: 70%; height: 65%; border: 3px solid #FFD700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; z-index: 1;">
+                    <img src="https://interior-comfort.by/wp-content/uploads/2019/08/1.jpg" alt="Интерьер ресторана Elite Café" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+
+                <!-- Secondary image -->
+                <div style="position: absolute; bottom: 20px; left: 0; width: 50%; height: 45%; border: 3px solid #FFD700; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; z-index: 2;">
+                    <img src="https://i.pinimg.com/736x/b8/1c/29/b81c2938199cf67a0bb74cabb213cce5.jpg" alt="Блюдо от шеф-повара Elite Café" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+
+                <!-- Decorative element -->
+                <div style="position: absolute; width: 120px; height: 120px; border: 2px solid #FFD700; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; opacity: 0.5;"></div>
+                <div style="position: absolute; width: 120px; height: 120px; border: 2px solid #FFD700; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg); z-index: 0; opacity: 0.5;"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Menu Section -->
+    <!-- Секция меню -->
+    <section class="menu">
+        <div class="menu-grid">
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="https://gorna.ru/wp-content/uploads/2022/05/blyuda-dlya-podachi-ribi-zp62kqhw.jpg" alt="Фирменное блюдо">
+                </div>
+                <div class="menu-item-content">
+                    <h3>Фирменное блюдо</h3>
+                    <p>Описание блюда и его уникальных особенностей</p>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="https://uj-images.ru/images/article/2022/03/6229e4d2c753e.webp" alt="Сезонное меню">
+                </div>
+                <div class="menu-item-content">
+                    <h3>Сезонное меню</h3>
+                    <p>Описание сезонных специалитетов</p>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="https://avatars.mds.yandex.net/i?id=b45b7e3e11dca87edcc2d5a4a29ac042_l-7012718-images-thumbs&n=13" alt="Десерты">
+                </div>
+                <div class="menu-item-content">
+                    <h3>Десерты</h3>
+                    <p>Описание авторских десертов</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Каталог -->
-    <section id="catalog" class="catalog">
-        <div class="container">
-            <h2 class="section-title">Наши сайты</h2>
-            <div class="catalog__grid">
-                <div class="catalog-item">
-                    <img src="https://creative-grupp.ru/upload/iblock/319/3194f8d8e05d3c1acb2a365f17ecc38e.jpg" alt="Интернет-магазин" class="catalog-item__image">
-                    <h3 class="catalog-item__title">Интернет-магазин</h3>
-                    <p class="catalog-item__price">от 50 000 руб.</p>
-                    <a href="#" class="catalog-item__button">Подробнее</a>
-                </div>
-                <div class="catalog-item">
-                    <img src="site2.jpg" alt="Корпоративный сайт" class="catalog-item__image">
-                    <h3 class="catalog-item__title">Корпоративный сайт</h3>
-                    <p class="catalog-item__price">от 30 000 руб.</p>
-                    <a href="#" class="catalog-item__button">Подробнее</a>
-                </div>
-                <div class="catalog-item">
-                    <img src="site3.jpg" alt="Лэндинг пейдж" class="catalog-item__image">
-                    <h3 class="catalog-item__title">Лэндинг пейдж</h3>
-                    <p class="catalog-item__price">от 20 000 руб.</p>
-                    <a href="#" class="catalog-item__button">Подробнее</a>
-                </div>
+    <!-- Gallery Section -->
+   <section class="gallery">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://i.pinimg.com/originals/db/3f/24/db3f2451f330ba391cc75d9bad2405bd.jpg" alt="Интерьер">
+                <div class="gallery-item-title">Уютный интерьер</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://avatars.mds.yandex.net/i?id=6d2b09b81b96a3ccb679ffcc84bcecf2_l-10613167-images-thumbs&n=13" alt="Блюдо">
+                <div class="gallery-item-title">Изысканные блюда</div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://img.restoclub.ru/uploads/place/9/8/6/0/98601adaed607ae64b5defca5507cb79_w1230_h820--no-cut.webp?v=3" alt="Атмосфера">
+                <div class="gallery-item-title">Неповторимая атмосфера</div>
             </div>
         </div>
     </section>
 
-    <!-- Отзывы -->
-    <section class="reviews">
-        <div class="container">
-            <h2 class="section-title">Отзывы клиентов</h2>
-            <div class="reviews__slider">
-                <div class="review">
-                    <p class="review__text">"Сайт от этой команды помог нам увеличить продажи на 40% за месяц!"</p>
-                    <p class="review__author">Иван, владелец интернет-магазина</p>
-                </div>
-                <div class="review">
-                    <p class="review__text">"Профессиональный подход и быстрая поддержка. Рекомендую!"</p>
-                    <p class="review__author">Ольга, предприниматель</p>
-                </div>
-            </div>
-        </div>
-    </section>
+   <form action="https://api.web3forms.com/submit" method="POST" style="max-width: 500px; margin: 0 auto; padding: 30px; background-color: #000000; color: #ffffff; border: 3px solid #FFD700; font-family: Arial, sans-serif;">
+    <!-- Form Header -->
+    <div style="text-align: center; margin-bottom: 25px; border-bottom: 2px solid #FFD700; padding-bottom: 15px;">
+        <h1 style="color: #FFD700; font-size: 28px; text-transform: uppercase; margin: 0 0 10px 0;">Elite Cafe</h1>
+        <p style="color: #cccccc; margin: 0;">Изысканная кухня в атмосфере роскоши</p>
+    </div>
 
-    <!-- Форма обратной связи -->
-    <section class="contact">
-        <div class="container">
-            <h2 class="section-title">Начните зарабатывать уже сегодня!</h2>
-            <form class="contact__form">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="tel" placeholder="Ваш телефон" required>
-                <input type="email" placeholder="Ваш email" required>
-                <button type="submit">Отправить заявку</button>
-            </form>
-        </div>
-    </section>
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value="34aad382-8a3f-4940-b92b-8c0e9f4fc7b5">
 
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 Продажа сайтов под ключ</p>
-            <div class="footer__social">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">Telegram</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Name Input -->
+    <div style="margin-bottom: 20px;">
+        <label for="name" style="display: block; margin-bottom: 8px; color: #FFD700; font-weight: bold;">Ваше имя</label>
+        <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; background-color: #111111; border: 1px solid #333333; color: #ffffff; box-sizing: border-box;">
+    </div>
 
-    <script src="scripts.js"></script>
+    <!-- Email Input -->
+    <div style="margin-bottom: 20px;">
+        <label for="email" style="display: block; margin-bottom: 8px; color: #FFD700; font-weight: bold;">Email адрес</label>
+        <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; background-color: #111111; border: 1px solid #333333; color: #ffffff; box-sizing: border-box;">
+    </div>
+
+    <!-- Message Input -->
+    <div style="margin-bottom: 20px;">
+        <label for="message" style="display: block; margin-bottom: 8px; color: #FFD700; font-weight: bold;">Сообщение</label>
+        <textarea id="message" name="message" required style="width: 100%; padding: 12px; background-color: #111111; border: 1px solid #333333; color: #ffffff; min-height: 120px; box-sizing: border-box;"></textarea>
+    </div>
+
+    <!-- Honeypot Spam Protection -->
+    <input type="checkbox" name="botcheck" style="display: none;">
+
+    <!-- Custom Confirmation / Success Page -->
+    <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+
+    <!-- Submit Button -->
+    <button type="submit" style="width: 100%; padding: 14px; background-color: #FFD700; color: #000000; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 16px;">Отправить</button>
+</form>
+
+
+    <!-- Footer -->
+  <footer style="background-color: #0a0a0a; color: #FFD700; padding: 40px 20px; text-align: center; border-top: 2px solid #FFD700; font-family: 'Arial', sans-serif; margin-top: 50px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <!-- Logo Area -->
+        <div style="margin-bottom: 25px;">
+            <h3 style="font-size: 24px; margin: 0; letter-spacing: 2px; text-transform: uppercase;">Elite Café</h3>
+            <p style="font-style: italic; margin: 5px 0 0; color: #ccc; font-size: 14px;">Изысканная кухня в атмосфере роскоши</p>
+        </div>
+
+        <!-- Social Media Icons -->
+        <div style="margin: 25px 0;">
+            <!-- Facebook -->
+            <a href="#" style="display: inline-block; margin: 0 12px; color: #FFD700; text-decoration: none; transition: transform 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/adik_oow/" style="display: inline-block; margin: 0 12px; color: #FFD700; text-decoration: none; transition: transform 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+
+            <!-- Twitter/X -->
+            <a href="#" style="display: inline-block; margin: 0 12px; color: #FFD700; text-decoration: none; transition: transform 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="#" style="display: inline-block; margin: 0 12px; color: #FFD700; text-decoration: none; transition: transform 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                </svg>
+            </a>
+
+            <!-- Telegram -->
+            <a href="#" style="display: inline-block; margin: 0 12px; color: #FFD700; text-decoration: none; transition: transform 0.3s ease;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                    <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 7.5a2.25 2.25 0 0 0 .126 4.073l3.9 1.495 2.25 6.54c.185.415.594.695 1.056.695a1.125 1.125 0 0 0 1.12-.857l2.868-11.594 6.627 3.045a2.25 2.25 0 0 0 3.026-2.116v-.58c0-.878-.507-1.673-1.3-2.057l-14.551-6.7a2.242 2.242 0 0 0-.986-.164z"></path>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div style="margin: 25px 0; color: #ccc; font-size: 14px;">
+            <p style="margin: 5px 0;">Адрес: ул. Примерная, 123, Москва</p>
+            <p style="margin: 5px 0;">Телефон: +7 (123) 456-78-90</p>
+            <p style="margin: 5px 0;">Email: info@elitecafe.ru</p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div style="margin: 25px 0;">
+            <a href="#" style="color: #FFD700; text-decoration: none; margin: 0 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Главная</a>
+            <a href="#" style="color: #FFD700; text-decoration: none; margin: 0 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Меню</a>
+            <a href="#" style="color: #FFD700; text-decoration: none; margin: 0 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Бронирование</a>
+            <a href="#" style="color: #FFD700; text-decoration: none; margin: 0 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">О нас</a>
+            <a href="#" style="color: #FFD700; text-decoration: none; margin: 0 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Контакты</a>
+        </div>
+
+        <!-- Separator -->
+        <div style="width: 100%; height: 1px; background: linear-gradient(to right, transparent, #FFD700, transparent); margin: 25px 0;"></div>
+
+        <!-- Copyright -->
+        <p style="margin: 0; padding: 10px 0; font-size: 14px;">&copy; 2025 Elite Café. Все права защищены.</p>
+    </div>
+</footer>
+
+    <script>
+        // Инициализация GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Анимация hero секции
+        gsap.to('.hero h1', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.5
+        });
+
+            gsap.to('.hero-subtitle', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.7
+        });
+
+        gsap.to('.hero p', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.7
+        });
+
+       gsap.to('.hero .book-btn', {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.9
+        });
+
+        // Анимация остальных секций
+        gsap.to('.about-content', {
+            scrollTrigger: {
+                trigger: '.about',
+                start: 'top center',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            duration: 1
+        });
+
+        gsap.to('.menu-item', {
+            scrollTrigger: {
+                trigger: '.menu',
+                start: 'top center',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            x: 0,
+            duration: 1,
+            stagger: 0.2
+        });
+
+        gsap.to('.gallery-item', {
+            scrollTrigger: {
+                trigger: '.gallery',
+                start: 'top center',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            stagger: 0.2
+        });
+
+        gsap.to('.contact-content', {
+            scrollTrigger: {
+                trigger: '.contact',
+                start: 'top center',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1,
+            duration: 1
+        });
+
+        // Инициализация Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('threejs-container').appendChild(renderer.domElement);
+
+        // Создание 3D объекта
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            wireframe: true
+        });
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        camera.position.z = 30;
+
+        // Анимация 3D объекта
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Обработка изменения размера окна
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+    </script>
 </body>
 </html>
